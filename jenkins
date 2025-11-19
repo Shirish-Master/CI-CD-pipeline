@@ -96,7 +96,9 @@ pipeline {
         always {
             echo "Pipeline finished."
             // This cleans up the Docker images to save space
-            sh "docker rmi ${env.IMAGE_NAME} || true"
+            script {
+                sh "docker rmi ${env.IMAGE_NAME} || true"
+            }
         }
         // "success" only runs if all stages passed
         success {
